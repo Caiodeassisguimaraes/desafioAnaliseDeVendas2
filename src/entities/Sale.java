@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class Sale {
 
 	private Integer month;
@@ -58,6 +60,23 @@ public class Sale {
 
 	public Double averagePrice() {
 		return total / items;
+	}
+		
+	@Override
+	public int hashCode() {
+		return Objects.hash(seller);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sale other = (Sale) obj;
+		return Objects.equals(seller, other.seller);
 	}
 
 	@Override
